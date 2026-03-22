@@ -1,29 +1,46 @@
 {
   "expo": {
-    "name": "baby-tap-app",
+    "name": "Baby Tap",
     "slug": "baby-tap-app",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "landscape",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "splash": {
       "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover",
+      "backgroundColor": "#000000"
     },
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.yair8520.babytap",
+      "supportsTablet": true,
+      "requiresFullScreen": true,
+      "infoPlist": {
+        "UIStatusBarHidden": true,
+        "UIRequiresFullScreen": true,
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#000000",
         "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
-      }
+      },
+      "softwareKeyboardLayoutMode": "pan"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-navigation-bar"
+    ],
+    "extra": {
+      "expo-navigation-bar": {},
+      "eas": {
+        "projectId": "29ba6cea-a1dd-451e-83a9-b04040e86219"
+      }
+    },
+    "owner": "yair8520"
   }
 }
