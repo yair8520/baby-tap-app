@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import {
   Animated,
   Easing,
+  Image,
   Platform,
   StyleSheet,
   Text,
@@ -34,7 +35,7 @@ export default function App() {
         duration: 1100,
         easing: Easing.linear,
         useNativeDriver: true,
-      })
+      }),
     );
     loop.start();
 
@@ -109,7 +110,7 @@ export default function App() {
               ],
             }}
           >
-            <Text style={styles.loaderEmoji}>👶</Text>
+            <Text style={styles.loaderText}>👶🏻</Text>
           </Animated.View>
         </View>
       )}
@@ -131,7 +132,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  loaderEmoji: {
-    fontSize: 96,
+  loaderIcon: {
+    width: 110,
+    height: 110,
+    borderRadius: 24,
+  },
+  loaderText: {
+    fontSize: 100,
+    fontWeight: "bold",
+    color: "#000",
   },
 });

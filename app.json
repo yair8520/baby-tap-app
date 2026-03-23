@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "Baby Tap",
+    "name": "Baby Tap Game",
     "slug": "baby-tap-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/ios/AppIcon~ios-marketing.png",
     "userInterfaceStyle": "dark",
     "splash": {
       "image": "./assets/splash-icon.png",
@@ -12,6 +12,7 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
+      "icon": "./assets/ios/AppIcon~ios-marketing.png",
       "bundleIdentifier": "com.yair8520.babytap",
       "supportsTablet": true,
       "requiresFullScreen": true,
@@ -22,11 +23,12 @@
       }
     },
     "android": {
+      "icon": "./assets/android/play_store_512.png",
       "adaptiveIcon": {
         "backgroundColor": "#ffffff",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
+        "backgroundImage": "./assets/android/res/mipmap-xxxhdpi/ic_launcher_background.png",
+        "foregroundImage": "./assets/android/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+        "monochromeImage": "./assets/android/res/mipmap-xxxhdpi/ic_launcher_monochrome.png"
       },
       "softwareKeyboardLayoutMode": "pan"
     },
