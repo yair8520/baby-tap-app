@@ -1,6 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { BackHandler, StyleSheet, View, Platform } from "react-native";
+import {
+  Animated,
+  Easing,
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { WebView } from "react-native-webview";
 import * as NavigationBar from "expo-navigation-bar";
 import * as Haptics from "expo-haptics";
@@ -11,11 +18,30 @@ interface WebViewMessage {
 }
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  const rotateAnim = useRef(new Animated.Value(0)).current;
+
   useEffect(() => {
     if (Platform.OS === "android") {
       NavigationBar.setVisibilityAsync("hidden");
     }
   }, []);
+
+  useEffect(() => {
+    const loop = Animated.loop(
+      Animated.timing(rotateAnim, {
+        toValue: 1,
+        duration: 1100,
+        easing: Easing.linear,
+        useNativeDriver: true,
+      })
+    );
+    loop.start();
+
+    return () => {
+      loop.stop();
+    };
+  }, [rotateAnim]);
 
   const handleMessage = ({
     nativeEvent,
@@ -52,9 +78,13 @@ export default function App() {
         bounces={false}
         scrollEnabled={false}
         onMessage={handleMessage}
+        mediaPlaybackRequiresUserAction={false}
+        allowsInlineMediaPlayback
+        originWhitelist={["*"]}
         overScrollMode="never"
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
+        onLoadEnd={() => setIsLoading(false)}
         injectedJavaScript={`
           (function() {
             document.documentElement.style.overflow = 'hidden';
@@ -65,6 +95,24 @@ export default function App() {
           true;
         `}
       />
+      {isLoading && (
+        <View style={styles.loaderOverlay}>
+          <Animated.View
+            style={{
+              transform: [
+                {
+                  rotate: rotateAnim.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: ["0deg", "360deg"],
+                  }),
+                },
+              ],
+            }}
+          >
+            <Text style={styles.loaderEmoji}>👶</Text>
+          </Animated.View>
+        </View>
+      )}
     </View>
   );
 }
@@ -76,5 +124,14 @@ const styles = StyleSheet.create({
   },
   webview: {
     flex: 1,
+  },
+  loaderOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "#ffffff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  loaderEmoji: {
+    fontSize: 96,
   },
 });
