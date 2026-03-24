@@ -15,7 +15,6 @@
       "icon": "./assets/ios/AppIcon~ios-marketing.png",
       "bundleIdentifier": "com.yair8520.babytap",
       "supportsTablet": true,
-      "requiresFullScreen": true,
       "infoPlist": {
         "UIStatusBarHidden": true,
         "UIRequiresFullScreen": true,
