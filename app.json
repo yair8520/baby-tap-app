@@ -19,7 +19,9 @@
       "infoPlist": {
         "UIStatusBarHidden": true,
         "UIRequiresFullScreen": true,
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "LSApplicationCategoryType": "public.app-category.games",
+        "LSSupportsGameMode": true
       }
     },
     "android": {
